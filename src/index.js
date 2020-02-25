@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
-const App = () => {
-  const initialState = parseInt(window.localStorage.getItem("count"));
+const App = ({ count: initialCount }) => {
+  const propsCount = parseInt(window.localStorage.getItem("count"));
+  const [count, setCount] = useState(initialCount || 0);
   window.localStorage.removeItem("count");
-  const [count, setCount] = useState(initialState || 0);
   return <button onClick={() => setCount(count + 1)}>{count}</button>;
 };
 
-ReactDOM.render(<App />, document.querySelector("#products-page"));
+export default App;
+// ReactDOM.render(<App />, document.querySelector("#products-page"));

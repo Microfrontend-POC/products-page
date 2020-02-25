@@ -1,11 +1,16 @@
 const path = require("path");
+var nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "build")
+    path: path.resolve(__dirname, "build"),
+    library: "productsPage",
+    libraryTarget: "umd",
+    globalObject: "window"
   },
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
